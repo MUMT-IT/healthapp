@@ -5,12 +5,14 @@
         <p class="panel-heading">
           Menu
         </p>
-        <a class="panel-block" v-for="slot in slots" :key="slot.id">
+        <router-link
+            :to="{name: 'AppointmentDetail', params: {'slotId': slot.id}}"
+            class="panel-block" v-for="slot in slots" :key="slot.id">
         <span class="panel-icon">
           <i class="fas fa-book" aria-hidden="true"></i>
         </span>
           {{ slot.location.name }}
-        </a>
+        </router-link>
       </nav>
     </div>
   </section>
