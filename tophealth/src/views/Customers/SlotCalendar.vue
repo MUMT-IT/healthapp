@@ -42,7 +42,12 @@ export default {
     },
     book: function() {
       if (this.date) {
-        alert('You have selected: ' + this.date)
+        this.$router.push({name: 'Slot', params: {
+          locationId: this.$route.params.locationId,
+            day: this.date.day,
+            month: this.date.month,
+            year: this.date.year
+          }})
       } else {
         this.$buefy.toast.open({
           message: 'Please selecte a date.',

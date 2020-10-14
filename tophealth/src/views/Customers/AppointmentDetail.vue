@@ -23,7 +23,10 @@
       </tr>
     </table>
     <b-loading :is-full-page="true" v-model="isLoading" :can-cancel="true"></b-loading>
-    <button class="button is-success" @click="book" v-if="isFinishedLoading">Book</button>
+    <div class="buttons">
+      <button class="button is-light" @click="cancel" v-if="isFinishedLoading">Back</button>
+      <button class="button is-success" @click="confirm" v-if="isFinishedLoading">Confirm</button>
+    </div>
   </section>
 </template>
 
@@ -40,8 +43,11 @@ data() {
   }
 },
   methods: {
-    book() {
+    confirm() {
       alert('booking..' + this.slot.id)
+    },
+    cancel() {
+      this.$router.back()
     }
   },
   mounted() {
