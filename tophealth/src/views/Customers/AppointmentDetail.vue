@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <table class="table is-striped is-fullwidth">
+    <table class="table is-striped is-fullwidth" v-if="isFinishedLoading">
       <tr>
         <td>ID</td>
         <td>{{ slot.id }}</td>
@@ -22,7 +22,8 @@
         <td>{{ slot.location.latlong }}</td>
       </tr>
     </table>
-    <button class="button is-success" @click="book">Book</button>
+    <b-loading :is-full-page="true" v-model="isLoading" :can-cancel="true"></b-loading>
+    <button class="button is-success" @click="book" v-if="isFinishedLoading">Book</button>
   </section>
 </template>
 
@@ -33,7 +34,9 @@ export default {
 name: "AppointmentDetail",
 data() {
   return {
-    slot: null
+    slot: null,
+    isLoading: false,
+    isFinishedLoading: false
   }
 },
   methods: {
@@ -43,9 +46,12 @@ data() {
   },
   mounted() {
     let self = this
+    self.isLoading = true
     console.log(this.$route.params.slotId)
     axios.get('http://localhost:3002/comhealth/slots/' + this.$route.params.slotId).then(function(resp) {
       self.slot = resp.data
+      self.isLoading = false
+      self.isFinishedLoading = true
     })
   }
 }

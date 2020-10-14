@@ -14,6 +14,7 @@
           {{ slot.location.name }}
         </router-link>
       </nav>
+      <b-loading :is-full-page="true" v-model="isLoading" :can-cancel="true"></b-loading>
     </div>
   </section>
 </template>
@@ -25,14 +26,17 @@ export default {
 name: "Appointment",
   data() {
     return {
-      slots: []
+      slots: [],
+      isLoading: false,
     }
   },
   methods: {
     loadData: function() {
       let self = this
+      self.isLoading = true
       axios.get('http://localhost:3002/comhealth/slots').then(function(resp) {
         self.slots = resp.data
+        self.isLoading = false
       })
     },
   },
