@@ -14,6 +14,10 @@
         <td>{{ slot.end }}</td>
       </tr>
       <tr>
+        <td>Activity</td>
+        <td>{{ slot.activity.name }}</td>
+      </tr>
+      <tr>
         <td>Location</td>
         <td>{{ slot.location.name }}</td>
       </tr>
@@ -39,7 +43,7 @@ data() {
   return {
     slot: null,
     isLoading: false,
-    isFinishedLoading: false
+    isFinishedLoading: false,
   }
 },
   methods: {

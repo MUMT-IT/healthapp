@@ -2,7 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <router-link :to="{'name': 'Appointment'}">Make an appointment</router-link>
+    <router-link :to="{'name': 'Activity'}">Make an appointment</router-link>
   </div>
 </template>
 

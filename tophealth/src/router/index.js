@@ -16,7 +16,12 @@ const routes = [
     component: () => import('../views/Customers/HealthRecords.vue')
   },
   {
-    path: '/appointments',
+    path: '/activity',
+    name: 'Activity',
+    component: () => import('../views/Customers/Activity.vue')
+  },
+  {
+    path: '/appointments/:activityId',
     name: 'Appointment',
     component: () => import('../views/Customers/Appointment.vue')
   },

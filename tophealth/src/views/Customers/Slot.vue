@@ -16,7 +16,11 @@
             <span class="tag is-success">5</span>
           </div>
           <div class="tags has-addons">
-            <span class="tag">Pending</span>
+            <span class="tag">
+              <span class="icon">
+                <i class="fas fa-user-clock"></i>
+              </span>
+            </span>
             <span class="tag is-warning">3</span>
           </div>
         </td>
@@ -34,7 +38,7 @@
 import axios from "axios";
 
 export default {
-  name: "Slot",
+  name: "AppointmentSlot",
   data() {
     return {
       slots: [],
