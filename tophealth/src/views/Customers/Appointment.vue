@@ -6,10 +6,10 @@
           Menu
         </p>
         <router-link
-            :to="{name: 'AppointmentDetail', params: {'slotId': slot.id}}"
+            :to="{name: 'SlotCalendar', params: {locationId: slot.location.id}}"
             class="panel-block" v-for="slot in slots" :key="slot.id">
         <span class="panel-icon">
-          <i class="fas fa-book" aria-hidden="true"></i>
+          <i class="far fa-calendar-alt" aria-hidden="true"></i>
         </span>
           {{ slot.location.name }}
         </router-link>

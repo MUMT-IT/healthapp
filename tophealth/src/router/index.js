@@ -21,6 +21,11 @@ const routes = [
     component: () => import('../views/Customers/Appointment.vue')
   },
   {
+    path: '/appointments/calendar/:locationId',
+    name: 'SlotCalendar',
+    component: () => import('../views/Customers/SlotCalendar.vue')
+  },
+  {
     path: '/appointments/:slotId',
     name: 'AppointmentDetail',
     component: () => import('../views/Customers/AppointmentDetail.vue')
