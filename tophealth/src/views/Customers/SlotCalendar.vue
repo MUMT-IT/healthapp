@@ -1,22 +1,29 @@
 <template>
-  <section class="section">
-    <b-field label="Pick a date">
-      <b-datepicker
-          inline
-          v-model="date"
-          :events="slots"
-      >
-      </b-datepicker>
-    </b-field>
-    <button class="button is-success" @click="book">Book</button>
-  </section>
+  <div>
+    <Nav></Nav>
+    <section class="section">
+      <b-field label="Pick a date">
+        <b-datepicker
+            inline
+            v-model="date"
+            :events="slots"
+        >
+        </b-datepicker>
+      </b-field>
+      <button class="button is-success" @click="book">Book</button>
+    </section>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
+import Nav from "@/components/Nav.vue";
 
 export default {
   name: "SlotCalendar",
+  components: {
+    Nav
+  },
   data() {
     return {
       date: null,
