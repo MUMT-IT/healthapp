@@ -26,6 +26,11 @@ const routes = [
     component: () => import('../views/Customers/ProfileEdit.vue')
   },
   {
+    path: '/customers/:id/bookings',
+    name: 'AccountBooking',
+    component: () => import('../views/Customers/Bookings.vue')
+  },
+  {
     path: '/activity',
     name: 'Activity',
     component: () => import('../views/Customers/Activity.vue')

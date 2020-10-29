@@ -19,7 +19,7 @@
         <b-navbar-item tag="router-link" :to="{ name: 'AccountProfile', params: { id: 1} }">
           Your Profile
         </b-navbar-item>
-        <b-navbar-item href="#">
+        <b-navbar-item tag="router-link" :to="{ name: 'AccountBooking', params: {id: 1} }">
           Your Bookings
         </b-navbar-item>
       </b-navbar-dropdown>
