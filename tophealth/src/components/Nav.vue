@@ -15,12 +15,12 @@
       <b-navbar-item tag="router-link" :to="{ name: 'Activity' }">
         Booking
       </b-navbar-item>
-      <b-navbar-dropdown label="Info">
-        <b-navbar-item href="#">
-          About
+      <b-navbar-dropdown label="Account">
+        <b-navbar-item tag="router-link" :to="{ name: 'AccountProfile', params: { id: 1} }">
+          Your Profile
         </b-navbar-item>
         <b-navbar-item href="#">
-          Contact
+          Your Bookings
         </b-navbar-item>
       </b-navbar-dropdown>
     </template>
