@@ -1,29 +1,37 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <nav class="panel">
-        <p class="panel-heading">
-          Menu
-        </p>
-        <router-link
-            :to="{name: 'AppointmentDetail', params: {'slotId': slot.id}}"
-            class="panel-block" v-for="slot in slots" :key="slot.id">
+  <div>
+    <Nav></Nav>
+    <section class="section">
+      <div class="container">
+        <nav class="panel">
+          <p class="panel-heading">
+            Location
+          </p>
+          <router-link
+              :to="{name: 'SlotCalendar', params: {locationId: slot.location.id}}"
+              class="panel-block" v-for="slot in slots" :key="slot.id">
         <span class="panel-icon">
-          <i class="fas fa-book" aria-hidden="true"></i>
+          <i class="far fa-calendar-alt" aria-hidden="true"></i>
         </span>
-          {{ slot.location.name }}
-        </router-link>
-      </nav>
-      <b-loading :is-full-page="true" v-model="isLoading" :can-cancel="true"></b-loading>
-    </div>
-  </section>
+            {{ slot.location.name }}
+          </router-link>
+        </nav>
+        <b-loading :is-full-page="true" v-model="isLoading" :can-cancel="true"></b-loading>
+      </div>
+    </section>
+
+  </div>
 </template>
 
 <script>
 import axios from "axios";
+import Nav from "@/components/Nav.vue"
 
 export default {
 name: "Appointment",
+  components: {
+    Nav
+  },
   data() {
     return {
       slots: [],
