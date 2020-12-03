@@ -1,0 +1,11 @@
+digraph G {
+    rankdir="LR";
+    account [label="Account", shape="rectagle"];
+    profile [label="Profile", shape="rectagle"];
+    healthprofile [label="Health Profile", shape="rectagle"];
+    booking [label="Bookings", shape="rectagle"];
+
+    account->profile;
+    account->healthprofile;
+    account->booking;
+}
