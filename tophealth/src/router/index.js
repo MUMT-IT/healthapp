@@ -26,6 +26,11 @@ const routes = [
     component: () => import('../views/Customers/ProfileEdit.vue')
   },
   {
+    path: '/customers/:id/health-profile/edit',
+    name: 'HealthProfile',
+    component: () => import('../views/Customers/HealthProfile.vue')
+  },
+  {
     path: '/customers/:id/bookings',
     name: 'AccountBooking',
     component: () => import('../views/Customers/Bookings.vue')
