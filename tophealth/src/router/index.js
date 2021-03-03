@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import axios from 'axios'
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,18 @@ const routes = [
   {
     path: '/customers/:id/profile',
     name: 'AccountProfile',
-    component: () => import('../views/Customers/Profile.vue')
+    component: () => import('../views/Customers/Profile.vue'),
+    beforeEnter: (to, from ,next) => {
+      // eslint-disable-next-line no-constant-condition
+      axios.get('http://localhost:5000/comhealth/api/v1/lineids/abcde').then(resp=>{
+        if (resp.data.status === true) {
+          alert('Found')
+            next()
+        } else {
+          next({ name: "Home"})
+        }
+      })
+    }
   },
   {
     path: '/customers/:id/profile/edit',
@@ -36,7 +48,7 @@ const routes = [
     component: () => import('../views/Customers/Activity.vue')
   },
   {
-    path: '/appointments/:activityId',
+    path: '/appointments/:serviceId',
     name: 'Appointment',
     component: () => import('../views/Customers/Appointment.vue')
   },

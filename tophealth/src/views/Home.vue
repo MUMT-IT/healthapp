@@ -13,6 +13,8 @@ export default {
   name: 'Home',
   components: {
     Nav
+  },
+  mounted() {
   }
 }
 </script>
