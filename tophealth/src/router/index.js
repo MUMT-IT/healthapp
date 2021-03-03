@@ -1,16 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import axios from 'axios'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
   {
     path: '/customers/:id/health-records',
     name: 'HealthRecords',
@@ -43,7 +37,7 @@ const routes = [
     component: () => import('../views/Customers/Bookings.vue')
   },
   {
-    path: '/activity',
+    path: '/',
     name: 'Activity',
     component: () => import('../views/Customers/Activity.vue')
   },
@@ -71,6 +65,11 @@ const routes = [
     path: '/slots/:slotId',
     name: 'SlotDetail',
     component: () => import('../views/Customers/SlotDetail.vue')
+  },
+  {
+    path: '/bookings/finish',
+    name: 'BookingStatus',
+    component: () => import('../views/Customers/BookingStatus.vue')
   },
   {
     path: '/about',

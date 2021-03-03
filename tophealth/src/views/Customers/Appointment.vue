@@ -1,8 +1,10 @@
 <template>
   <div>
-    <Nav></Nav>
     <section class="section">
       <h1 class="title">Booking</h1>
+      <h1 class="subtitle">
+        กรุณาเลือกหน่วยรับบริการและวันเวลาตามที่ท่านสะดวก
+      </h1>
       <div class="container">
         <b-field label="สถานที่">
           <b-select placeholder="Select a site" v-model="selectedSite">
@@ -43,13 +45,9 @@
 
 <script>
 import axios from "axios"
-import Nav from "@/components/Nav.vue"
 
 export default {
 name: "Appointment",
-  components: {
-    Nav
-  },
   data() {
     return {
       slots: [],
@@ -87,7 +85,7 @@ name: "Appointment",
     loadData: function() {
       let self = this
       self.isLoading = true
-      axios.get('http://localhost:5000/api/v1.0/hscheduler/slots').then(function(resp) {
+      axios.get('https://mumtmis.herokuapp.com/api/v1.0/hscheduler/slots').then(function(resp) {
         resp.data[0].forEach((s)=>{
           if(s['service']===parseInt(self.$route.params['serviceId']) && s['cancelled_at'] === null) {
             s['start'] = new Date(s['start'])
@@ -98,7 +96,7 @@ name: "Appointment",
           }
         })
         self.siteIds.forEach((s)=>{
-          axios.get('http://localhost:5000/api/v1.0/hscheduler/sites/' + s).then((resp)=>{
+          axios.get('https://mumtmis.herokuapp.com/api/v1.0/hscheduler/sites/' + s).then((resp)=>{
             self.sites.push(resp.data[0])
           })
         })
