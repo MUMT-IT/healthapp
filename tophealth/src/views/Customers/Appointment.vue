@@ -28,12 +28,13 @@
           <p class="panel-heading">
             Available Slots
           </p>
-          <a class="panel-block" v-for="slot in filteredSlots" :key="slot.id">
+          <router-link class="panel-block" v-for="slot in filteredSlots"
+                       :key="slot.id" :to="{name: 'SlotDetail', params: {slotId: slot.id }}">
             <span class="panel-icon">
               <i class="fas fa-book" aria-hidden="true"></i>
             </span>
             {{ slot.date | moment('hh:mm') }} - {{ slot.end | moment('hh:mm')}} ({{ slot.quota }})
-          </a>
+          </router-link>
         </nav>
       </div>
     </section>
