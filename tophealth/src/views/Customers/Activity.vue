@@ -1,55 +1,55 @@
 <template>
   <div>
-    <Nav></Nav>
     <section class="section">
       <div class="container">
+        <div class="has-text-centered">
+          <h1 class="title is-size-5">Health Booking Service</h1>
+          <h1 class="subtitle is-size-5">
+            กรุณาเลือกบริการเพื่อทำการนัดหมาย
+          </h1>
+        <br>
         <b-field>
-          <b-select placeholder="Select activity" v-model="selectedActivity">
+          <b-select placeholder="Select services" v-model="selectedActivity" expanded>
             <option
                 v-for="option in options"
                 :value="option"
                 :key="option.id">
-              {{ option.activity }}
+              {{ option.name }}
             </option>
           </b-select>
         </b-field>
-        <button class="button is-success" @click="book">Go</button>
+        <button class="button is-success" @click="book">Ok</button>
+      </div>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import Nav from '@/components/Nav.vue'
+import axios from "axios";
+
 export default {
   name: "Activity",
-  components: {
-    Nav
-  },
   data() {
     return {
       selectedActivity: null,
-      options: [
-        {
-          id: 1,
-          activity: 'Follow up'
-        },
-        {
-          id: 2,
-          activity: 'Wellness'
-        },
-        {
-          id: 3,
-          activity: 'Consult'
-        },
-      ]
+      options: [],
+      profile: {}
     }
   },
   methods: {
     book: function() {
       console.log(this.selectedActivity.id)
-      this.$router.push({name: 'Appointment', params: {activityId: this.selectedActivity.id}})
+      this.$router.push({name: 'Appointment', params: {serviceId: this.selectedActivity.id}})
     }
+  },
+  mounted() {
+    let self = this;
+    axios.get('https://mumtmis.herokuapp.com/api/v1.0/hscheduler/services').then((resp)=>{
+      resp.data[0].forEach((service)=>{
+        self.options.push(service);
+      })
+    })
   }
 }
 </script>
