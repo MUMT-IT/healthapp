@@ -22,6 +22,9 @@
         <b-navbar-item tag="router-link" :to="{ name: 'AccountBooking', params: {id: 1} }">
           Your Bookings
         </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ name: 'HealthProfile', params: { id: 1} }">
+          Your Health Profile
+        </b-navbar-item>
       </b-navbar-dropdown>
     </template>
 
